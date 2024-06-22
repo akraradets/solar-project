@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ARG WORKDIR=/workspaces/SolarProject
+ARG WORKDIR=/workspaces/solar-project
 ARG VENDOR=""
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1

@@ -5,6 +5,10 @@ description = ""
 authors = ["akraradets <akraradets@gmail.com>"]
 readme = "README.md"
 
+packages = [
+    { include = "solar-project" }
+]
+
 [tool.poetry.dependencies]
 python = "^3.10"
 gdal = "3.4.1"
