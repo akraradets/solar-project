@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "SolarProject"
+name = "solar-project"
 version = "0.0.1"
 description = ""
 authors = ["akraradets <akraradets@gmail.com>"]
