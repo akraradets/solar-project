@@ -22,6 +22,11 @@ NAME_FORMAT = config["name_format"]
 _LIST_NAME_FORMAT = NAME_FORMAT.split("_")
 OUTPUT_PATH = config["output_path"]
 STOP_IF_NOT_DIVISIBLE = config["stop_if_not_divisible"]
+NAME_MODE = config["name_mode"]
+_valid_name_mode = {'gps','pixel'}
+if(NAME_MODE not in _valid_name_mode):
+    raise ValueError(f"name_mode={NAME_MODE} can only be {_valid_name_mode} only")
+
 
 init_logger(name=_FILE_NAME, filename=_FILE_NAME)
 _logger = logging.getLogger(_FILE_NAME)
@@ -92,13 +97,23 @@ def spilt_tif(tif:xarray.DataArray, filepath:str):
         ymin, ymax = ypt, ypt + TILE_SIZE
         xmin, xmax = xpt, xpt + TILE_SIZE
         if(ymax > ysize):
-            ymax = ysize
+            ymax = ysize - 1
         if(xmax > xsize):
-            xmax = xsize
-        fmtdict["xmin"] = xmin
-        fmtdict["xmax"] = xmax
-        fmtdict["ymin"] = ymin
-        fmtdict["ymax"] = ymax
+            xmax = xsize - 1
+
+        if(NAME_MODE == 'pixel'):
+            fmtdict["xmin"] = xmin
+            fmtdict["xmax"] = xmax
+            fmtdict["ymin"] = ymin
+            fmtdict["ymax"] = ymax
+        elif(NAME_MODE == 'gps'):
+            fmtdict["xmin"] = float(tif.x[xmin].values)
+            fmtdict["xmax"] = float(tif.x[xmax].values)
+            fmtdict["ymin"] = float(tif.y[ymin].values)
+            fmtdict["ymax"] = float(tif.y[ymax].values)
+        else:
+            raise ValueError(f"This should not happen. {NAME_MODE=} is invalid.")
+        
         name = _create_name_from_fmtdict(fmtdict=fmtdict)
         temp = tif[:,ymin:ymax,xmin:xmax]
         temp.rio.to_raster(f"{path}/{name}.tif")
