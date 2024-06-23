@@ -1,0 +1,15 @@
+[readtif]
+    name_format = "filename_xmin_xmax_ymin_ymax"
+    output_path = "tiles"
+    # if the tile output is not euqal to the `tile_size`, the program stop
+    # This happen if the original image is 10 and `tile_size` is 3.
+    # After split, we will get [3,3,3,1].
+    stop_if_not_divisible = true
+    # the size of tile in pixle
+    tile_size = 2000
+    # the step size in range (0,1]. 
+    # 0 has fully overlap (and not possible)
+    # 0.5 is half overlap
+    # 1 has no overlap 
+    step_size = 0.5
+

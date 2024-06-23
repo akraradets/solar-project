@@ -12,7 +12,13 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.10"
 gdal = "3.4.1"
+matplotlib = "^3.9.0"
+rioxarray = "^0.15.6"
+toml = "^0.10.2"
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
 
 [build-system]
 requires = ["poetry-core"]
