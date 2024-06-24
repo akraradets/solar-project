@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "solar-project"
+name = "solar"
 version = "0.0.1"
 description = ""
 authors = ["akraradets <akraradets@gmail.com>"]
 readme = "README.md"
 
 packages = [
-    { include = "solar-project" }
+    { include = "solar" }
 ]
 
 [tool.poetry.dependencies]
