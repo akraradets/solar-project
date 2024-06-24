@@ -10,11 +10,6 @@
 	"remoteEnv": {
 		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
 	},
-	"containerEnv": {
-		"PROJECT_BASE_PATH": "/workspaces/solar-project",
-		"PROJECT_DATA_PATH": "data",
-		"PROJECT_LOG_PATH": "logs"
-	},
 	"features": {
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
 			"version": "latest",
