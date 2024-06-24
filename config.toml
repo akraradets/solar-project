@@ -3,7 +3,7 @@
 
     # 'gps': use GPS value to name `xmin xmax ymin ymax`
     # 'pixel': Use pixel value to name `xmin xmax ymin ymax`
-    name_mode = 'gpssd'
+    name_mode = 'pixel'
     output_path = "tiles"
     # if the tile output is not euqal to the `tile_size`, the program stop
     # This happen if the original image is 10 and `tile_size` is 3.
