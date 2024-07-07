@@ -1,3 +1,8 @@
+[global]
+    base_path="/workspaces/solar-project"
+    data_path="data_train"
+    log_path="logs"
+
 [projectprepare]
     data = ['satellites','satellites_tiles','shapes','shapes_tiles']
     
