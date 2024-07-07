@@ -10,8 +10,8 @@ import toml
 
 _FILE_NAME = "readtif"
 # Load environment variable
-BASE_PATH = os.environ["PROJECT_BASE_PATH"]
-DATA_PATH = os.environ["PROJECT_DATA_PATH"]
+BASE_PATH = os.environ["BASE_PATH"]
+DATA_PATH = os.environ["DATA_PATH"]
 # Load configuration
 _CONFIG_PATH = os.path.join(BASE_PATH, 'config.toml')
 with open(_CONFIG_PATH, "r") as f:

@@ -3,8 +3,8 @@ import logging.handlers as handlers
 import sys
 import os
 
-BASE_PATH = os.environ["PROJECT_BASE_PATH"]
-LOG_PATH  = os.environ["PROJECT_LOG_PATH"]
+BASE_PATH = os.environ["BASE_PATH"]
+LOG_PATH  = os.environ["LOG_PATH"]
 _path = os.path.join(BASE_PATH, LOG_PATH)
 
 def init_logger(name:str, filename:str, path:str=_path, level:int=logging.INFO):
