@@ -1,28 +1,51 @@
 import argparse
+from argparse import RawTextHelpFormatter
 import sys
 from pathlib import Path
 
 
 class MyParser(argparse.ArgumentParser):
     def error(self, message):
-        sys.stderr.write('error: %s\n' % message)
+        message = f"error: {message}\n"
+        # sys.stderr.write('error: %s\n' % message)
+        eprint(message=message)
         self.print_help()
-        sys.exit(2)
+        sys.exit(1)
+
+def eprint(message:str):
+    message = f"\033[01;31m{message}\033[0m"
+    print(message, file=sys.stderr)
+
+description = """
+Supply the argument `task` as an integer number.
+Each interger means the followings.
+
+Task
+====
+  1: prepare project structure
+  2: split tile
+"""
 
 parser = MyParser(
     prog="solar-cli",
-    description="This is the CLI section of the Solar Project",
+    description=description,
+    formatter_class=RawTextHelpFormatter
     # epilog="Thanks for using %(prog)s! :)",
 )
 
-parser.add_argument("task", type=int)
+parser.add_argument("task", type=int, help="The specific task you want to run.")
 args = parser.parse_args()
 
-# target_dir = Path(args.path)
-
-# if not target_dir.exists():
-#     print("The target directory doesn't exist")
-#     raise SystemExit(1)
-
-# for entry in target_dir.iterdir():
-#     print(entry.name)
+task:int = args.task
+if(task == 1):
+    # 1: prepare project structure
+    raise NotImplementedError
+elif(task == 2):
+    # 2: split tile
+    raise NotImplementedError
+else:
+    # Supply the incorrect interger
+    # sys.stderr.write(f"The {task=} is not a valid task number.")
+    eprint(f"error: The {task=} is not a valid task number.")
+    sys.exit(1)
+    # raise ValueError(f"The {task=} is not a valid task number.")
