@@ -7,11 +7,10 @@ from glob import glob
 from vendors.logger import init_logger
 import logging
 import toml
+from solar.vars import *
+
 
 _FILE_NAME = "readtif"
-# Load environment variable
-BASE_PATH = os.environ["BASE_PATH"]
-DATA_PATH = os.environ["DATA_PATH"]
 # Load configuration
 _CONFIG_PATH = os.path.join(BASE_PATH, 'config.toml')
 with open(_CONFIG_PATH, "r") as f:

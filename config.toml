@@ -1,10 +1,15 @@
 [global]
     base_path="/workspaces/solar-project"
-    data_path="data_train"
     log_path="logs"
 
-[projectprepare]
-    data = ['satellites','satellites_tiles','shapes','shapes_tiles']
+[prepare_project]
+    # this will create 
+    # - `base_path`/data_train/satellites
+    # - `base_path`/data_train/satellites_tiles
+    # - `base_path`/data_train/shapes
+    # - `base_path`/data_train/shapes_tiles
+    data_train = ['satellites','satellites_tiles','shapes','shapes_tiles']
+    data_test  = ['satellites','satellites_tiles','shapes','shapes_tiles']
     
 [readtif]
     name_format = "filename_xmin_xmax_ymin_ymax"

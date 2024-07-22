@@ -2,12 +2,9 @@ import logging
 import logging.handlers as handlers
 import sys
 import os
+from logging import Logger
 
-BASE_PATH = os.environ["BASE_PATH"]
-LOG_PATH  = os.environ["LOG_PATH"]
-_path = os.path.join(BASE_PATH, LOG_PATH)
-
-def init_logger(name:str, filename:str, path:str=_path, level:int=logging.INFO):
+def init_logger(name:str, filename:str, path:str, level:int=logging.INFO) -> Logger:
     logger = logging.getLogger(name)
     logger.setLevel(level)
     file = os.path.join(path,f"{filename}.log")
@@ -27,3 +24,4 @@ def init_logger(name:str, filename:str, path:str=_path, level:int=logging.INFO):
     logger.addHandler(fileHandler)
 
     logger.propagate = False
+    return logging.getLogger(name)

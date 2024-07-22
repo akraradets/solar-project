@@ -38,8 +38,10 @@ args = parser.parse_args()
 
 task:int = args.task
 if(task == 1):
+    from solar.prepare_project import run
     # 1: prepare project structure
-    raise NotImplementedError
+    # raise NotImplementedError
+    run()
 elif(task == 2):
     # 2: split tile
     raise NotImplementedError
